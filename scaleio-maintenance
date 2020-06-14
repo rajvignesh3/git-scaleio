@@ -1,0 +1,29 @@
+import requests
+from scaleioclient import connections
+from scaleioserver import credentials_import
+import novaclient
+    
+
+def loginfetch_token():
+    print("Getting token...")
+    cred = credentialsImport()
+    reslogin = requests.get('{}{}'.format(adminurl,loginurl), auth=(cred[gateway_admin], cred[gateway_password]))
+    if reslogin.ok:
+        authToken = resLogin.headers['X-AuthToken']
+        print("Token: " + authtoken)
+        return authtoken, adminurl
+    else:
+        print("HTTP {} -, {} Message {}".format (reslogin.status_code, reslogin.reason, reslogin.text))
+
+
+def get_volumedetails(adminurl, volumeurl, authtoken):
+    print("Checking session...")
+    header_volume = {'X-AuthToken': authtoken,
+                 'Accept': 'application/json'}
+    res_volume = requests.get(adminurl + volumeurl, headers=header_volume)
+    if res_volume.ok:
+        print("Authenticated...")
+        print(res_volume)
+        print("HTTP } -, {} Message {}".format ((res_volume.status_code, res_volume.reason, res_volume.text))
+    else:
+        print("HTTP } -, {} Message {}".format ((res_volume.status_code, res_volume.reason, res_volume.text))
