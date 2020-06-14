@@ -24,6 +24,6 @@ def get_volumedetails(adminurl, volumeurl, authtoken):
     if res_volume.ok:
         print("Authenticated...")
         print(res_volume)
-        print("HTTP } -, {} Message {}".format ((res_volume.status_code, res_volume.reason, res_volume.text))
+        print("HTTP {} -, {} Message {}".format ((res_volume.status_code, res_volume.reason, res_volume.text))
     else:
-        print("HTTP } -, {} Message {}".format ((res_volume.status_code, res_volume.reason, res_volume.text))
+        print("HTTP {} -, {} Message {}".format ((res_volume.status_code, res_volume.reason, res_volume.text))
